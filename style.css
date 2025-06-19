@@ -1,0 +1,65 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-link {
+    color: #8B6C65;
+}
+.nav-link.active {
+  font-weight: bold;
+  color: #f06428 !important;
+}
+/* تأثير عند المرور على الروابط في الهيدر */
+header .nav-link:hover {
+  color: #f06428 !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: underline;
+}
+.bg-rose {
+    background-color: #f7cfd0;
+}
+
+a.btn:hover {
+  background-color: #e04e1a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+a.btn:hover {
+  background-color: #da5521;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+/* روابط الفوتر عند المرور */
+footer a:hover {
+  color: #f06428 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* أيقونات التواصل عند المرور */
+footer i:hover {
+  color: #f06428 !important;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+/* السطر الأخير للفوتر – تباين أعلى */
+footer .copyright {
+  background-color: #dc868e; /* لون وردي أغمق */
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+}

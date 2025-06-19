@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événement & Co</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  
+</head>
+<body>
+    <header>
+   <ul class="nav justify-content-sm-evenly">
+    <li>
+        <img src="/ImagesAccueil/Logo2-removebg-preview.webp" alt="Logo Événement & Co" style="height: 50px ! important; width:auto;">
+    </li>
+  <li class="nav-item">
+    <a class="nav-link active " aria-current="page" href="#">ACCUEIL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="#">PROGRAMME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="#" >CONTACT</a>
+    <li class="nav-item">
+  
+</li>
+  </li>
+  
+</ul>
+</header>
+<section class="py-5">
+  <div class="container" style="background-color: #f7cfd0; border-radius: 10px;">
+    <div class="row align-items-center" style="min-height: 400px;">
+      <!-- Texte à gauche -->
+     <div class="col-md-6 d-flex flex-column justify-content-center" style="padding-left: 50px;">
+ <h1 style="font-weight: 700; font-size: 2.5rem; line-height: 1.2;">
+  <span class="nowrap">Organisez un <span style="color: #f06428;">événement</span></span><br>
+  <span style="color: #f06428;">inoubliable</span>
+</h1>
+  
+  <p style="font-size: 1.1rem; max-width: 90%;">
+    <strong>Mariage, Anniversaire, Soirée privée...</strong><br>
+    nous organisons vos plus beaux événements avec passion et simplicité.
+  </p>
+
+  <a href="#" class="btn mt-3 text-white"
+     style="background-color: #f06428; border: none; width: fit-content; padding: 10px 20px;">
+    Découvrir nos services
+  </a>
+</div>
+      <!-- Image à droite -->
+      <div class="col-md-6 text-center">
+        <img src="./ImagesAccueil/Beautiful ballons.webp" class="img-fluid" alt="Femme joyeuse" style="max-height: 400px;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- القسم الثاني من الصفحة: Nos Services -->
+<section class="py-5" id="services">
+  <!-- حاوية Bootstrap لضبط العرض -->
+  <div class="container text-center">
+    
+    <!-- عنوان القسم بخط كبير ولون غامق -->
+    <h2 class="mb-3" style="font-weight: bold; font-size: 2.2rem; color:#4a4a4a;">
+      Nos Services
+    </h2>
+    
+    <!-- وصف تحت العنوان بلون بني فاتح وخط أوضح -->
+    <p class="mb-5" style="color: #8B6C65; font-size: 1.25rem;font-weight: 500;max-width: 700;margin: 0 auto;">
+      Organisation sur mesure pour tous les âges et styles
+    </p>
+
+    <!-- صف Bootstrap للكروت -->
+    <div class="row">
+
+      <!-- كارت Anniversaire -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="./ImagesAccueil/Birthday3.webp" class="card-img-top rounded" alt="Anniversaire" style="height: 250px; object-fit: cover;">
+          <div class="card-body d-flex flex-column justify-content-between text-center">
+            <div>
+              <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Anniversaire</h5>
+              <p class="card-text" style="color: #4a4a4a; font-size: 1.05rem;">
+                Créez un anniversaire magique pour tous les âges, avec une décoration sur mesure, des animations et un gâteau inoubliable.
+              </p>
+            </div>
+            <!-- زر في الوسط بعرض تلقائي -->
+            <div class="text-center">
+              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
+                En savoir plus
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- كارت Mariage -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="./ImagesAccueil/Mariages.webp" class="card-img-top rounded" alt="Mariage" style="height: 250px; object-fit: cover;">
+          <div class="card-body d-flex flex-column justify-content-between text-center">
+            <div>
+              <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Mariage</h5>
+              <p class="card-text" style="color: #4a4a4a; font-size: 1.05rem;">
+                Un accompagnement complet pour une cérémonie élégante et pleine d’émotions.
+              </p>
+            </div>
+            <div class="text-center">
+              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
+                En savoir plus
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- كارت Soirée -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="./ImagesAccueil/Karaoke.webp" class="card-img-top rounded" alt="Soirée" style="height: 250px; object-fit: cover;">
+          <div class="card-body d-flex flex-column justify-content-between text-center">
+            <div>
+              <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Soirée</h5>
+              <p class="card-text" style="color: #4a4a4a; font-size: 1.05rem;">
+                Organisation de vos soirées privées sur mesure, dans une ambiance élégante et festive.
+              </p>
+            </div>
+            <div class="text-center">
+              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
+                En savoir plus
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- نهاية الصف -->
+  </div> <!-- نهاية الحاوية -->
+</section>
+<!-- Témoignages Section -->
+<section class="py-5" style="background-color: #c7d399;">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Partie Témoignages -->
+      <div class="col-md-6">
+        <h2 class="mb-4" style="color: white; font-weight: bold;">Témoignages de nos clients</h2>
+
+        <!-- Témoignage 1 -->
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body d-flex">
+            <div class="me-3">
+              <i class="bi bi-chat-left-quote-fill" style="font-size: 1.5rem; color: #f06428;"></i>
+            </div>
+            <div>
+              <p class="mb-1">“Un anniversaire magique pour notre fille ! Décoration magnifique et équipe à l'écoute.”</p>
+              <small class="text-muted">– Nora</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 2 -->
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body d-flex">
+            <div class="me-3">
+              <i class="bi bi-chat-left-quote-fill" style="font-size: 1.5rem; color: #f06428;"></i>
+            </div>
+            <div>
+              <p class="mb-1">“Notre mariage a dépassé nos attentes. Tout était parfaitement orchestré !”</p>
+              <small class="text-muted">– Karim & Salma</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Témoignage 3 -->
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body d-flex">
+            <div class="me-3">
+              <i class="bi bi-chat-left-quote-fill" style="font-size: 1.5rem; color: #f06428;"></i>
+            </div>
+            <div>
+              <p class="mb-1">“Une soirée privée réussie grâce à une ambiance chaleureuse et élégante.”</p>
+              <small class="text-muted">– Lina M.</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Partie Image -->
+      <div class="col-md-6 text-center">
+        <img src="./ImagesAccueil/Baloons3.webp" alt="Témoignages visuel" class="img-fluid rounded shadow" style="max-height: 500px;">
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer style="background-color: #f7cfd0;">
+  <div class="container py-4">
+    <div class="row text-center text-md-start">
+
+      <!-- Contact -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold mb-3">Contact</h5>
+        <p><i class="bi bi-geo-alt-fill me-2"></i>12 Rue des Fêtes, 38000 Grenoble</p>
+        <p><i class="bi bi-telephone-fill me-2"></i>04 55 66 77 88</p>
+        <p><i class="bi bi-envelope-fill me-2"></i>contact@evenements-co.fr</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold mb-3">Navigation</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark text-decoration-none">Accueil</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Programme</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Contact</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Mentions légales</a></li>
+        </ul>
+      </div>
+
+      <!-- Réseaux sociaux -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold mb-3">Suivez-nous</h5>
+        <div class="d-flex justify-content-center justify-content-md-start gap-3">
+          <a href="#"><i class="bi bi-twitter fs-4 text-dark"></i></a>
+          <a href="#"><i class="bi bi-instagram fs-4 text-dark"></i></a>
+          <a href="#"><i class="bi bi-facebook fs-4 text-dark"></i></a>
+          <a href="#"><i class="bi bi-tiktok fs-4 text-dark"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bas de page -->
+  <div class="copyright">
+  © 2025 Événement & Co – Tous droits réservés
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
