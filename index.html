@@ -14,16 +14,16 @@
     <header>
    <ul class="nav justify-content-sm-evenly">
     <li>
-        <img src="/ImagesAccueil/Logo2-removebg-preview.webp" alt="Logo Événement & Co" style="height: 50px ! important; width:auto;">
+        <img src="/ImagesAccueil/Logo2-removebg-preview.webp" alt="Logo Événement & Co" style="height: 50px ! important; width:auto;" loading="lazy">
     </li>
   <li class="nav-item">
     <a class="nav-link active " aria-current="page" href="#">ACCUEIL</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="#">PROGRAMME</a>
+    <a class="nav-link " href="programme.html">PROGRAMME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="#" >CONTACT</a>
+    <a class="nav-link " href="contact.html" >CONTACT</a>
     <li class="nav-item">
   
 </li>
@@ -46,14 +46,14 @@
     nous organisons vos plus beaux événements avec passion et simplicité.
   </p>
 
-  <a href="#" class="btn mt-3 text-white"
+  <a href="#services" class="btn mt-3 text-white"
      style="background-color: #f06428; border: none; width: fit-content; padding: 10px 20px;">
     Découvrir nos services
   </a>
 </div>
       <!-- Image à droite -->
       <div class="col-md-6 text-center">
-        <img src="./ImagesAccueil/Beautiful ballons.webp" class="img-fluid" alt="Femme joyeuse" style="max-height: 400px;">
+        <img src="./ImagesAccueil/Beautiful ballons.webp" class="img-fluid" alt="Femme joyeuse" style="max-height: 400px;" loading="lazy">
       </div>
 
     </div>
@@ -66,7 +66,7 @@
   <div class="container text-center">
     
     <!-- عنوان القسم بخط كبير ولون غامق -->
-    <h2 class="mb-3" style="font-weight: bold; font-size: 2.2rem; color:#4a4a4a;">
+    <h2 class="mb-3" style="font-weight: bold; font-size: 2.2rem; color:#f06428;">
       Nos Services
     </h2>
     
@@ -81,7 +81,7 @@
       <!-- كارت Anniversaire -->
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="./ImagesAccueil/Birthday3.webp" class="card-img-top rounded" alt="Anniversaire" style="height: 250px; object-fit: cover;">
+          <img src="./ImagesAccueil/Birthday3.webp" class="card-img-top rounded" alt="Anniversaire" style="height: 250px; object-fit: cover;" loading="lazy">
           <div class="card-body d-flex flex-column justify-content-between text-center">
             <div>
               <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Anniversaire</h5>
@@ -91,8 +91,7 @@
             </div>
             <!-- زر في الوسط بعرض تلقائي -->
             <div class="text-center">
-              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
-                En savoir plus
+             <a href="#anniversaire" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">En savoir plus</a>
               </a>
             </div>
           </div>
@@ -102,7 +101,7 @@
       <!-- كارت Mariage -->
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="./ImagesAccueil/Mariages.webp" class="card-img-top rounded" alt="Mariage" style="height: 250px; object-fit: cover;">
+          <img src="./ImagesAccueil/Mariages.webp" class="card-img-top rounded" alt="Mariage" style="height: 250px; object-fit: cover;" loading="lazy">
           <div class="card-body d-flex flex-column justify-content-between text-center">
             <div>
               <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Mariage</h5>
@@ -111,9 +110,7 @@
               </p>
             </div>
             <div class="text-center">
-              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
-                En savoir plus
-              </a>
+              <a href="#mariage" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">En savoir plus</a>
             </div>
           </div>
         </div>
@@ -122,7 +119,7 @@
       <!-- كارت Soirée -->
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-sm">
-          <img src="./ImagesAccueil/Karaoke.webp" class="card-img-top rounded" alt="Soirée" style="height: 250px; object-fit: cover;">
+          <img src="./ImagesAccueil/Karaoke.webp" class="card-img-top rounded" alt="Soirée" style="height: 250px; object-fit: cover;" loading="lazy">
           <div class="card-body d-flex flex-column justify-content-between text-center">
             <div>
               <h5 class="card-title" style="color: #f06428; font-weight: bold; font-size: 1.4rem;">Soirée</h5>
@@ -130,9 +127,9 @@
                 Organisation de vos soirées privées sur mesure, dans une ambiance élégante et festive.
               </p>
             </div>
-            <div class="text-center">
-              <a href="#" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
-                En savoir plus
+            <a href="#soiree" class="btn text-white mt-3 px-4 py-2" style="background-color: #f06428; border: none;">
+  En savoir plus
+</a>
               </a>
             </div>
           </div>
@@ -142,6 +139,71 @@
     </div> <!-- نهاية الصف -->
   </div> <!-- نهاية الحاوية -->
 </section>
+
+<!-- Section Détails - Anniversaire -->
+<section id="anniversaire" class="py-5 text-white" style="background-image: url('./ImagesAccueil/background\ birthday.webp'); background-size: cover; background-position: center; padding-bottom: 150px;">
+  <div class="container text-center bg-dark bg-opacity-75 rounded p-5">
+    <h2 class="fw-bold mb-4">🎉 Détails – Anniversaire</h2>
+    <p class="fs-5">
+      Offrez une fête d’anniversaire inoubliable grâce à nos prestations sur-mesure :
+    </p>
+    <ul class="list-unstyled fs-5 mb-4">
+      <li>🎈 Décoration joyeuse et personnalisée</li>
+      <li>🎂 Gâteau d'anniversaire unique</li>
+      <li>🎉 Animations adaptées à tous les âges</li>
+      <li>📸 Coin photo et surprises festives</li>
+      <li>🎶 Musique et ambiance garanties</li>
+    </ul>
+    <a href="#services" class="btn btn-outline-light rounded-pill px-4 py-2">Retour aux services</a>
+  </div>
+</section>
+<div style="height: 50px;"></div>
+
+<!-- Section Mariage -->
+<section id="mariage" class="py-5 text-center text-white" style="background: url('./ImagesAccueil/backgroung\ mariage.webp') center/cover no-repeat; padding-bottom: 150px;">  <div class="section-overlay py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Mariage inoubliable</h2>
+
+      <p class="fs-5 mx-auto" style="max-width: 700px;">
+        Pour votre jour spécial, nous concevons une célébration élégante et émotive.<br>
+        De la décoration romantique à la coordination de chaque moment, vivez l’amour sans stress.
+      </p>
+
+      <ul class="list-unstyled d-inline-block text-start fs-5 mt-4">
+        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Lieu, décoration et musique sur mesure</li>
+        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Services traiteur, animation et photographe</li>
+      </ul>
+
+      <div class="mt-4">
+        <a href="#services" class="btn btn-outline-light rounded-pill px-4 py-2">Retour aux services</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height: 50px;"></div>
+
+
+<!-- Section Soirée -->
+<section id="soiree" class="py-5 text-white text-center" style="background: url('./ImagesAccueil/background\ soirée-2.webp') center/cover no-repeat; padding-bottom: 150px;">  <div class="section-overlay py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Soirée privée sur-mesure</h2>
+      <p class="fs-5 mx-auto" style="max-width: 700px;">
+        Envie de briller ? Nous créons une soirée 100% stylée et personnalisée selon vos envies.
+      </p>
+      <ul class="list-unstyled d-inline-block text-start fs-5 mt-4">
+        <li>🌟 Ambiance élégante et festive</li>
+        <li>🎧 DJ, lumières et animations</li>
+        <li>📸 Photobooth et surprises</li>
+      </ul>
+      <div class="mt-4">
+        <a href="#services" class="btn btn-outline-light rounded-pill px-4 py-2">Retour aux services</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height: 50px;"></div>
+
+
 <!-- Témoignages Section -->
 <section class="py-5" style="background-color: #c7d399;">
   <div class="container">
@@ -194,7 +256,7 @@
 
       <!-- Partie Image -->
       <div class="col-md-6 text-center">
-        <img src="./ImagesAccueil/Baloons3.webp" alt="Témoignages visuel" class="img-fluid rounded shadow" style="max-height: 500px;">
+        <img src="./ImagesAccueil/Baloons3.webp" alt="Témoignages visuel" class="img-fluid rounded shadow" style="max-height: 500px;" loading="lazy">
       </div>
 
     </div>
@@ -217,9 +279,9 @@
       <div class="col-md-4 mb-3">
         <h5 class="fw-bold mb-3">Navigation</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-dark text-decoration-none">Accueil</a></li>
-          <li><a href="#" class="text-dark text-decoration-none">Programme</a></li>
-          <li><a href="#" class="text-dark text-decoration-none">Contact</a></li>
+          <li><a href="index.html" class="text-dark text-decoration-none">Accueil</a></li>
+          <li><a href="programme.html" class="text-dark text-decoration-none">Programme</a></li>
+          <li><a href="contact.html" class="text-dark text-decoration-none">Contact</a></li>
           <li><a href="#" class="text-dark text-decoration-none">Mentions légales</a></li>
         </ul>
       </div>

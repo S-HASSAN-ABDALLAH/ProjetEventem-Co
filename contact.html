@@ -10,20 +10,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   
 </head>
-<body>
+<body class ="bg-info">
     <header>
    <ul class="nav justify-content-sm-evenly">
     <li>
         <img src="/ImagesAccueil/Logo2-removebg-preview.webp" alt="Logo Événement & Co" style="height: 50px ! important; width:auto;">
     </li>
   <li class="nav-item">
-    <a class="nav-link active " aria-current="page" href="#">ACCUEIL</a>
+    <a class="nav-link " href="index.html">ACCUEIL</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="contact.html">PROGRAMME</a>
+    <a class="nav-link " href="programme.html">PROGRAMME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="#" >CONTACT</a>
+    <a class="nav-link active " aria-current="page" href="contact.html">CONTACT</a>
     <li class="nav-item">
   
 </li>
@@ -32,10 +32,177 @@
 </ul>
 </header>
 
+<!-- قسم رئيسي بنص يسار وصورة يمين -->
+<section class="py-5" style="background-color: #f7e6d3;">
+  <div class="container-fluid px-0">
+    <div class="row g-0">
 
+      <!-- عمود النصوص -->
+      <!-- <div class="col-lg-5 d-flex flex-column justify-content-center p-5"> -->
+        <div class="row align-items-center" style="min-height: 500px;">
+          <div class="col-lg-5 px-5">
+        <!-- <h1 class="fw-bold mb-4" style="font-size: 2.8rem; color: #3a2c27;"> -->
+          <h1 class="fw-bold 1h-sm mb-3" style="font-size: 2.5rem;">
+          Organisez votre événement<br>avec nous
+        </h1>
+        <!-- <p class="text-muted" style="font-size: 1.1rem;"> -->
+          <p class="text-secondary fs-5"> Un simple clic pour lancer votre moment exceptionnel
+        </p>
+        <a href="#contact" class="btn btn-danger mt-3 rounded-pill px-4 py-2">Contactez-nous</a>
+      </div>
 
+      <!-- عمود الصورة -->
+      <div class="col-lg-7">
+        <img src="./ImagesProgrammeContact/happy Bithday.webp" alt="Événement heureux"
+             class="img-fluid w-100" style="height: 100%; object-fit: cover;">
+      </div>
 
+    </div>
+  </div>
+</section>
 
+<!-- قسم: نموذج الاتصال -->
+<section class="py-5" style="background-color: #f6dac8;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- عنوان -->
+        <h2 class="text-center fw-bold mb-4" style="color: #c2185b;">Envoyez-nous un message</h2>
+
+        <!-- نموذج الاتصال -->
+        <form class="bg-white p-4 rounded-4 shadow-sm">
+          <div class="mb-3">
+            <label for="nom" class="form-label text-danger fw-semibold">Nom *</label>
+            <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label text-danger fw-semibold">Email *</label>
+            <input type="email" class="form-control" id="email" placeholder="exemple@email.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="tel" class="form-label text-danger fw-semibold">Téléphone</label>
+            <input type="tel" class="form-control" id="tel" placeholder="+33 6 12 34 56 78">
+          </div>
+
+          <div class="mb-4">
+            <label for="message" class="form-label text-danger fw-semibold">Message *</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Votre message..." required></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn px-5 py-2 text-white fw-semibold" style="background-color: #d63384;">Envoyer</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- قسم: معلومات الاتصال مع أيقونات -->
+<section class="py-5" style="background: linear-gradient(135deg, #d63384, #e85ea4);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center text-white p-5 rounded-4 shadow"
+           style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);">
+
+        <!-- العنوان -->
+        <h2 class="fw-bold mb-4">Nos coordonnées</h2>
+
+        <!-- العنوان -->
+        <p class="mb-3">
+          <i class="bi bi-geo-alt-fill me-2"></i>
+          <strong>Adresse :</strong><br>
+          12 Rue des Fêtes, 38000 Grenoble
+        </p>
+
+        <!-- الهاتف -->
+        <p class="mb-3">
+          <i class="bi bi-telephone-fill me-2"></i>
+          <strong>Téléphone :</strong><br>
+          04 55 66 77 88
+        </p>
+
+        <!-- البريد -->
+        <p class="mb-3">
+          <i class="bi bi-envelope-fill me-2"></i>
+          <strong>Email :</strong><br>
+          contact@evenements-co.fr
+        </p>
+
+        <!-- الساعات -->
+        <p class="mb-0">
+          <i class="bi bi-clock-fill me-2"></i>
+          <strong>Horaires d'ouverture :</strong><br>
+          Lundi - Samedi : 10h - 19h<br>
+          Dimanche : Fermé
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- قسم: Mentions légales -->
+<section class="py-4" style="background-color: #eeeeee;">
+  <div class="container">
+    <div class="text-center">
+
+      <!-- العنوان -->
+      <h5 class="fw-bold mb-3" style="color: #333;">Mentions légales</h5>
+
+      <!-- المحتوى -->
+      <p class="mb-1">
+        <strong>SIRET :</strong> 123 456 789 00010
+      </p>
+      <p class="mb-1">
+        <strong>Responsable de publication :</strong> Mme Dupont Clara
+      </p>
+      <p class="mb-0">
+        <strong>Hébergeur :</strong> OVH – 2 Rue Kellermann, 59100 Roubaix
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Formulaire de contact -->
+<section id="contact" class="py-5" style="background-color: #fdf6f6;">
+  <div class="container">
+    <h2 class="text-center mb-4 text-primary">Envoyez-nous un message</h2>
+    <form>
+      <!-- Nom -->
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom *</label>
+        <input type="text" class="form-control" id="nom" required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="mb-3">
+        <label for="tel" class="form-label">Téléphone</label>
+        <input type="tel" class="form-control" id="tel">
+      </div>
+
+      <!-- Message -->
+      <div class="mb-3">
+        <label for="message" class="form-label">Message *</label>
+        <textarea class="form-control" id="message" rows="4" required></textarea>
+      </div>
+
+      <!-- Bouton envoyer -->
+      <button type="submit" class="btn btn-primary px-4">Envoyer</button>
+    </form>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer style="background-color: #f7cfd0;">
