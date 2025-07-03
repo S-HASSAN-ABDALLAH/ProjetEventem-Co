@@ -78,24 +78,20 @@ Des tests ont été réalisés pour évaluer la performance, l’accessibilité 
 
 ### ✅ Programme - version mobile
 
-![Accueil Mobile Lighthouse](./programme-version-mobile-lighthouse.png)
+![Programme Mobile Lighthouse](./programme-version-mobile-lighthouse.png)
 
 ### ✅ Programme - version desktop
 
-![Accueil Desktop Lighthouse](./programme-version-desktop-lighthouse.png)
+![Programme Desktop Lighthouse](./programme-version-desktop-lighthouse.png)
 
 ### ✅ Contact - version mobile
 
-![Accueil Mobile Lighthouse](./contact-version-mobile-lighthouse.png)
+![Contact Mobile Lighthouse](./contact-version-mobile-lighthouse.png)
 
 ### ✅ Contact - version desktop
 
-![Accueil Desktop Lighthouse](./contact.version-desktop-lighthouse.png)
+![Contact Desktop Lighthouse](./contact.version-desktop-lighthouse.png)
 
-
-### 🧩 Maquette Figma - Accueil
-
-![Maquette Accueil](./Maquettes/figma-accueil.png)
 
 
 ## 🧩 Maquettes du projet
@@ -117,7 +113,7 @@ Une maquette basse-fidélité a été réalisée avec **Balsamiq Wireframes**, p
 
 📎 Captures des wireframes Balsamiq :
 - Accueil : ![Accueil Wireframe Web](./Maquettes/wireframe-accueil-balsamiq-version-desktop.png)
-- Accueil : ![Accueil Wireframe Mobile](./Maquettes/wireframe-accueil-balsamiq-version-desktop.png)
+- Accueil : ![Accueil Wireframe Mobile](./Maquettes/wireframe-accueil-balsamiq-version-mobile.png)
  Programme : ![Programme Wireframe Web](./Maquettes/wireframe-programme-balsamiq-version-desktop.png)
 - Programme : ![Programme Wireframe Mobile](./Maquettes/wireframe-programme-balsamiq-version-mobile.png)
  Contact : ![Contact Wireframe Web](./Maquettes/wireframe-contact-balsamiq-version-desktop.png)
@@ -136,7 +132,12 @@ Auteur : Shadah
 Crédits externes :
 Images en format WebP (conversion locale)
 Icônes via Bootstrap Icons
-Polices via Google Fonts - Poppins
+Polices via Google Fonts - Poppins# Projet Evenement & Co
+
+Ce projet est hébergé en ligne 👉 [Cliquez ici pour voir le site](https://evenement-co.netlify.app)
+
+
+
 
 
 
