@@ -78,7 +78,7 @@ Des tests ont été réalisés pour évaluer la performance, l’accessibilité 
 
 ### ✅ Programme - version mobile
 
-![Programme Mobile Lighthouse](./programme-version-mobile-lighthouse.png)
+![Programme Mobile Lighthouse](./programme.version-mobile-lighthouse.png)
 
 ### ✅ Programme - version desktop
 
@@ -86,7 +86,7 @@ Des tests ont été réalisés pour évaluer la performance, l’accessibilité 
 
 ### ✅ Contact - version mobile
 
-![Contact Mobile Lighthouse](./contact-version-mobile-lighthouse.png)
+![Contact Mobile Lighthouse](./contact.version_mobile-lighthouse.png)
 
 ### ✅ Contact - version desktop
 
