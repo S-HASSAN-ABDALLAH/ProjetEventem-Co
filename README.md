@@ -6,6 +6,10 @@ Description courte : Site vitrine pour une agence d'organisation d'événements 
 Objectif du site : Présenter les services de l'agence et permettre aux visiteurs de consulter les détails et de contacter facilement.
 Public cible : Particuliers cherchant à organiser un événement privé (familles, couples, jeunes adultes).
 
+## 🖼️ Aperçu du projet
+![Aperçu du projet](./EvenementsCo_Screenshot.png)
+
+
 2. 🔹 Structure du site
 Pages incluses :
 index.html (Accueil)
