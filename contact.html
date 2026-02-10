@@ -92,25 +92,25 @@
         <h2 class="text-center fw-bold mb-4" style="color: #c2185b;">Envoyez-nous un message</h2>
 
         <!-- نموذج الاتصال -->
-        <form class="bg-white p-4 rounded-4 shadow-sm">
+        <form method="POST" action="contact.php" class="p-4 rounded-4 shadow-sm" >
           <div class="mb-3">
             <label for="nom" class="form-label text-danger fw-semibold">Nom *</label>
-            <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
           </div>
 
           <div class="mb-3">
             <label for="email" class="form-label text-danger fw-semibold">Email *</label>
-            <input type="email" class="form-control" id="email" placeholder="exemple@email.com" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="exemple@email.com" required>
           </div>
 
           <div class="mb-3">
             <label for="tel" class="form-label text-danger fw-semibold">Téléphone</label>
-            <input type="tel" class="form-control" id="tel" placeholder="+33 6 12 34 56 78">
+            <input type="tel" class="form-control" id="tel" name="tel" placeholder="+33 6 12 34 56 78">
           </div>
 
           <div class="mb-4">
             <label for="message" class="form-label text-danger fw-semibold">Message *</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Votre message..." required></textarea>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Votre message..." required></textarea>
           </div>
 
           <div class="text-center">
@@ -242,5 +242,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<!-- Script JavaScript personnalisé pour le formulaire -->
+<script src="contact.js"></script>
 </body>
 </html>
