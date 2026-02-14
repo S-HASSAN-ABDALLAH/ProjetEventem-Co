@@ -2,8 +2,14 @@
 # Fichiers de configuration sensibles
 # NE JAMAIS COMMITTER CES FICHIERS !
 # ==========================================
+.env
 email_config.php
 db.php
+
+# ==========================================
+# Dossiers à ignorer
+# ==========================================
+ProjetCalculatrice1/
 
 # ==========================================
 # Dépendances (Composer)
