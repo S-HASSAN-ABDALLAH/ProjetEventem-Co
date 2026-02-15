@@ -119,15 +119,8 @@ composer install
 #### 3. Configuration de la base de données
 
 ```bash
-# Créer la base de données
-mysql -u root -p
-
-# Dans MySQL
-CREATE DATABASE evenementco;
-exit;
-
-# Importer le schéma
-mysql -u root -p evenementco < sql/schema.sql
+# Créer la base de données et importer le schéma complet
+mysql -u root -p < sql/init_database.sql
 ```
 
 #### 4. Configuration des fichiers
@@ -158,9 +151,7 @@ SMTP_PASSWORD=votre-mot-de-passe-application
 
 Importer le fichier SQL pour créer le compte admin :
 
-```bash
-mysql -u root -p evenementco < sql/create_admin.sql
-```
+**Note:** Le fichier `init_database.sql` crée déjà le compte admin automatiquement.
 
 **Identifiants admin par défaut** (pour test/démonstration) :
 ```
