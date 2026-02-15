@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Charger la connexion à la base de données
-require_once "db.php";
+require_once "../includes/db.php";
 
 // Vérifier que le formulaire a été soumis via POST
 if ($_SERVER['REQUEST_METHOD'] == "POST") {

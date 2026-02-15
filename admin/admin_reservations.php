@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Charger la connexion à la base de données
-require_once "db.php";
+require_once "../includes/db.php";
 
 // ========================================
 // ÉTAPE 1 : Récupérer toutes les réservations avec JOIN

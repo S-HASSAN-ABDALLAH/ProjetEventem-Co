@@ -14,7 +14,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 // Charger la connexion à la base de données
-require_once "db.php";
+require_once "../includes/db.php";
 
 // Variable pour stocker les erreurs
 $error_message = "";

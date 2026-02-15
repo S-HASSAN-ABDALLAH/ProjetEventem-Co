@@ -3,8 +3,8 @@
 # NE JAMAIS COMMITTER CES FICHIERS !
 # ==========================================
 .env
-email_config.php
-db.php
+includes/email_config.php
+includes/db.php
 
 # ==========================================
 # Dossiers à ignorer

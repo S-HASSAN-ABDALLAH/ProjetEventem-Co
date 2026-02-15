@@ -6,10 +6,10 @@
 // ========================================
 
 // Charger la connexion à la base de données
-require_once "db.php";
+require_once "includes/db.php";
 
 // Charger la configuration email SMTP
-require_once "email_config.php";
+require_once "includes/email_config.php";
 
 // Charger PHPMailer (installé via Composer)
 require_once "vendor/autoload.php";
@@ -161,18 +161,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Email 1 : Notification pour l'admin
             $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
             $mail->addAddress(ADMIN_EMAIL);
-            $mail->Subject = '🔔 Nouvelle demande de réservation - ' . $evenement['nom'];
+            $mail->Subject = 'Nouvelle demande de réservation - ' . $evenement['nom'];
             $mail->Body = "Bonjour,\n\n" .
                           "Une nouvelle demande de réservation a été reçue :\n\n" .
-                          "📅 Type d'événement : " . $evenement['nom'] . "\n" .
-                          "👤 Nom du client : $nom_client\n" .
-                          "📧 Email : $email_client\n" .
-                          "📞 Téléphone : " . ($tel_client ?: 'Non fourni') . "\n" .
-                          "📆 Date souhaitée : $date_evenement\n" .
-                          "📍 Ville : $ville\n" .
-                          "👥 Nombre d'invités : $nombre_invites\n" .
-                          "💰 Prix total : " . number_format($prix_total, 2, ',', ' ') . " €\n" .
-                          "💬 Message : " . ($message_client ?: 'Aucun message') . "\n\n" .
+                          "Type d'événement : " . $evenement['nom'] . "\n" .
+                          "Nom du client : $nom_client\n" .
+                          "Email : $email_client\n" .
+                          "Téléphone : " . ($tel_client ?: 'Non fourni') . "\n" .
+                          "Date souhaitée : $date_evenement\n" .
+                          "Ville : $ville\n" .
+                          "Nombre d'invités : $nombre_invites\n" .
+                          "Prix total : " . number_format($prix_total, 2, ',', ' ') . " €\n" .
+                          "Message : " . ($message_client ?: 'Aucun message') . "\n\n" .
                           "Veuillez traiter cette demande depuis votre espace administrateur.\n\n" .
                           "Cordialement,\n" .
                           "Système de réservation - Événement & Co";
@@ -181,20 +181,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // 5D : Envoyer un email de confirmation au client
             $mail->clearAddresses(); // Vider les destinataires précédents
             $mail->addAddress($email_client, $nom_client);
-            $mail->Subject = '✅ Confirmation de votre demande de réservation - ' . $evenement['nom'];
+            $mail->Subject = 'Confirmation de votre demande de réservation - ' . $evenement['nom'];
             $mail->Body = "Bonjour $nom_client,\n\n" .
                           "Nous avons bien reçu votre demande de réservation pour l'événement suivant :\n\n" .
-                          "📅 Type d'événement : " . $evenement['nom'] . "\n" .
-                          "📆 Date souhaitée : $date_evenement\n" .
-                          "📍 Ville : $ville\n" .
-                          "👥 Nombre d'invités : $nombre_invites\n" .
-                          "💰 Prix estimé : " . number_format($prix_total, 2, ',', ' ') . " €\n\n" .
-                          "Statut actuel : ⏳ En attente de validation\n\n" .
+                          "Type d'événement : " . $evenement['nom'] . "\n" .
+                          "Date souhaitée : $date_evenement\n" .
+                          "Ville : $ville\n" .
+                          "Nombre d'invités : $nombre_invites\n" .
+                          "Prix estimé : " . number_format($prix_total, 2, ',', ' ') . " €\n\n" .
+                          "Statut actuel : En attente de validation\n\n" .
                           "Notre équipe va étudier votre demande et vous contacter très prochainement " .
                           "pour confirmer la disponibilité et finaliser les détails de votre événement.\n\n" .
                           "Si vous avez des questions, n'hésitez pas à nous contacter :\n" .
-                          "📧 Email : contact@evenements-co.fr\n" .
-                          "📞 Téléphone : 04 55 66 77 88\n\n" .
+                          "Email : contact@evenements-co.fr\n" .
+                          "Téléphone : 04 55 66 77 88\n\n" .
                           "Merci de votre confiance !\n\n" .
                           "Cordialement,\n" .
                           "L'équipe Événement & Co\n" .
@@ -211,6 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             exit();
         } catch (Exception $e) {
             // Erreur d'envoi d'email ou autre
+            error_log("ERREUR ENVOI EMAIL: " . $e->getMessage());
             header('Location: programme.html?error=email');
             exit();
         }

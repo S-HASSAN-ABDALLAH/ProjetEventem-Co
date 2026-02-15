@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         successDiv.style.maxWidth = '900px';
         successDiv.innerHTML = `
             <div class="container">
-                <strong>✅ Succès !</strong> Votre demande de réservation a été envoyée avec succès.
+                <strong>Succès !</strong> Votre demande de réservation a été envoyée avec succès.
                 <br>Vous recevrez un email de confirmation très prochainement.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
             </div>
@@ -114,28 +114,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         switch (error) {
             case 'db':
-                errorMessage = '<strong>❌ Erreur de base de données.</strong> Un problème technique est survenu. Veuillez réessayer plus tard.';
+                errorMessage = '<strong>Erreur de base de données.</strong> Un problème technique est survenu. Veuillez réessayer plus tard.';
                 break;
 
             case 'email':
-                errorMessage = '<strong>⚠️ Attention !</strong> Votre réservation a été enregistrée mais l\'email de confirmation n\'a pas pu être envoyé. Nous vous contacterons directement.';
+                errorMessage = '<strong>Attention !</strong> Votre réservation a été enregistrée mais l\'email de confirmation n\'a pas pu être envoyé. Nous vous contacterons directement.';
                 break;
 
             case 'validation':
                 if (messages) {
                     const errorList = messages.split('|');
-                    errorMessage = '<strong>⚠️ Erreurs de validation :</strong><ul class="mb-0 mt-2">';
+                    errorMessage = '<strong>Erreurs de validation :</strong><ul class="mb-0 mt-2">';
                     errorList.forEach(msg => {
                         errorMessage += `<li>${msg}</li>`;
                     });
                     errorMessage += '</ul>';
                 } else {
-                    errorMessage = '<strong>⚠️ Erreur de validation.</strong> Veuillez vérifier vos informations.';
+                    errorMessage = '<strong>Erreur de validation.</strong> Veuillez vérifier vos informations.';
                 }
                 break;
 
             default:
-                errorMessage = '<strong>❌ Erreur inconnue.</strong> Veuillez réessayer.';
+                errorMessage = '<strong>Erreur inconnue.</strong> Veuillez réessayer.';
         }
 
         errorDiv.innerHTML = `
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Désactiver le bouton pour éviter les doubles clics
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = '⏳ Envoi en cours...';
+                submitBtn.textContent = 'Envoi en cours...';
                 submitBtn.classList.add('disabled');
             }
         });

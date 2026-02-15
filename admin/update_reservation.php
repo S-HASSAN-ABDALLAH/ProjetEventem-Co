@@ -5,13 +5,16 @@
 // ========================================
 
 // Charger PHPMailer (doit être au début du fichier)
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Charger la connexion à la base de données
-require_once "db.php";
+require_once "../includes/db.php";
+
+// Charger la configuration email SMTP
+require_once "../includes/email_config.php";
 
 // Vérifier que le formulaire a été soumis via POST
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -87,21 +90,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $mail = new PHPMailer(true);
 
                 try {
-                    // Charger les identifiants depuis .env
-                    $dotenv = parse_ini_file('.env');
-
-                    // Configuration SMTP
+                    // Configuration SMTP (utilise les constantes de email_config.php)
                     $mail->isSMTP();
-                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Host = SMTP_HOST;
                     $mail->SMTPAuth = true;
-                    $mail->Username = $dotenv['SMTP_USERNAME'];
-                    $mail->Password = $dotenv['SMTP_PASSWORD'];
+                    $mail->Username = SMTP_USERNAME;
+                    $mail->Password = SMTP_PASSWORD;
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                    $mail->Port = 587;
+                    $mail->Port = SMTP_PORT;
                     $mail->CharSet = 'UTF-8';
 
+                    // Activer le mode debug en développement (à désactiver en production)
+                    // $mail->SMTPDebug = 2; // Décommenter pour voir les détails SMTP
+
                     // Expéditeur
-                    $mail->setFrom('contact@evenements-co.fr', 'Événement & Co');
+                    $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
 
                     // Destinataire : le client
                     $mail->addAddress($reservation['email_client'], $reservation['nom_client']);
@@ -116,35 +119,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     if ($nouveau_statut == 'confirme') {
                         // EMAIL DE CONFIRMATION
-                        $mail->Subject = '✅ Votre réservation est confirmée !';
+                        $mail->Subject = 'Votre réservation est confirmée';
 
                         $mail->Body = "
 Bonjour {$reservation['nom_client']},
 
-Bonne nouvelle ! 🎉
+Bonne nouvelle !
 
 Votre réservation pour l'événement \"{$reservation['nom_evenement']}\" a été CONFIRMÉE par notre équipe.
 
-📋 RÉCAPITULATIF DE VOTRE RÉSERVATION :
+RÉCAPITULATIF DE VOTRE RÉSERVATION :
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎪 Événement       : {$reservation['nom_evenement']}
-📅 Date            : {$date_formatee}
-📍 Ville           : {$reservation['ville']}
-👥 Nombre d'invités: {$reservation['nombre_invites']} personnes
-💰 Prix total      : {$reservation['prix_total']} €
+Événement       : {$reservation['nom_evenement']}
+Date            : {$date_formatee}
+Ville           : {$reservation['ville']}
+Nombre d'invités: {$reservation['nombre_invites']} personnes
+Prix total      : {$reservation['prix_total']} €
 
-✅ Statut : CONFIRMÉE
+Statut : CONFIRMÉE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Nous sommes ravis de vous compter parmi nous et mettons tout en œuvre pour faire de votre événement un moment inoubliable !
 
-📞 Pour toute question, n'hésitez pas à nous contacter :
+Pour toute question, n'hésitez pas à nous contacter :
    Email : contact@evenements-co.fr
-   Téléphone : 04 76 XX XX XX
+   Téléphone : 04 55 66 77 88
 
-Nous vous attendons avec impatience ! ✨
+Nous vous attendons avec impatience !
 
 Cordialement,
 L'équipe Événement & Co
@@ -155,30 +158,30 @@ Cet email a été envoyé automatiquement, merci de ne pas y répondre directeme
 
                     } else {
                         // EMAIL D'ANNULATION
-                        $mail->Subject = '❌ Votre réservation a été annulée';
+                        $mail->Subject = 'Votre réservation a été annulée';
 
                         $mail->Body = "
 Bonjour {$reservation['nom_client']},
 
 Nous sommes désolés de vous informer que votre réservation pour l'événement \"{$reservation['nom_evenement']}\" a été annulée.
 
-📋 DÉTAILS DE LA RÉSERVATION ANNULÉE :
+DÉTAILS DE LA RÉSERVATION ANNULÉE :
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎪 Événement       : {$reservation['nom_evenement']}
-📅 Date            : {$date_formatee}
-📍 Ville           : {$reservation['ville']}
-👥 Nombre d'invités: {$reservation['nombre_invites']} personnes
+Événement       : {$reservation['nom_evenement']}
+Date            : {$date_formatee}
+Ville           : {$reservation['ville']}
+Nombre d'invités: {$reservation['nombre_invites']} personnes
 
-❌ Statut : ANNULÉE
+Statut : ANNULÉE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Si vous souhaitez effectuer une nouvelle réservation ou obtenir plus d'informations sur les raisons de cette annulation, n'hésitez pas à nous contacter.
 
-📞 Contact :
+Contact :
    Email : contact@evenements-co.fr
-   Téléphone : 04 76 XX XX XX
+   Téléphone : 04 55 66 77 88
 
 Nous espérons avoir le plaisir de vous accueillir prochainement pour un autre événement.
 
@@ -195,7 +198,9 @@ Cet email a été envoyé automatiquement, merci de ne pas y répondre directeme
 
                 } catch (Exception $e) {
                     // Si l'email échoue, on continue quand même (la mise à jour a réussi)
-                    // Vous pouvez logger l'erreur ici si nécessaire
+                    // Logger l'erreur pour diagnostic
+                    error_log("ERREUR ENVOI EMAIL CLIENT: " . $e->getMessage());
+                    // La mise à jour de la réservation a réussi, on continue
                 }
 
                 // Succès : rediriger avec message de succès
