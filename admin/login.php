@@ -198,15 +198,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         </form>
 
-        <!-- Informations de test -->
-        <div class="mt-4 p-3 bg-light rounded">
-            <small class="text-muted">
-                <strong>Compte de test :</strong><br>
-                Email : <code>admin@evenements-co.fr</code><br>
-                Mot de passe : <code>admin123</code>
-            </small>
-        </div>
-
     </div>
 </div>
 

@@ -156,14 +156,28 @@ SMTP_PASSWORD=votre-mot-de-passe-application
 
 #### 5. Créer un compte administrateur
 
+Importer le fichier SQL pour créer le compte admin :
+
 ```bash
-# Accéder à : http://localhost/ProjetEventem-Co/admin/create_admin.php
-# Créer votre compte admin
+mysql -u root -p evenementco < sql/create_admin.sql
 ```
+
+**Identifiants admin par défaut** (pour test/démonstration) :
+```
+Email    : admin@evenements-co.fr
+Password : admin123
+```
+
+⚠️ **IMPORTANT** : Changez ces identifiants en production !
 
 #### 6. Lancer l'application
 
 Accédez à `http://localhost/ProjetEventem-Co/` dans votre navigateur.
+
+### Accès admin
+
+- **URL** : `http://localhost/ProjetEventem-Co/admin/login.php`
+- **Documentation** : Voir [admin/README.md](admin/README.md) pour plus de détails
 
 ---
 
