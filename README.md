@@ -155,11 +155,14 @@ Importer le fichier SQL pour créer le compte admin :
 
 **Identifiants admin par défaut** (pour test/démonstration) :
 ```
-Email    : admin@evenements-co.fr
-Password : admin123
+Email    : [Défini dans sql/init_database.sql]
+Password : [Défini dans sql/init_database.sql]
 ```
 
-⚠️ **IMPORTANT** : Changez ces identifiants en production !
+⚠️ **IMPORTANT** :
+- Consultez le fichier `sql/init_database.sql` pour les identifiants de test
+- Changez IMPÉRATIVEMENT ces identifiants avant toute mise en production
+- Ces identifiants ne doivent être utilisés que pour le développement local
 
 #### 6. Lancer l'application
 
