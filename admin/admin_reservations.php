@@ -17,6 +17,15 @@ if (!isset($_SESSION['user_id'])) {
 require_once "../includes/db.php";
 
 // ========================================
+// PROTECTION CSRF : Générer le token
+// ========================================
+// Charger les fonctions de gestion CSRF
+require_once "includes/csrf_helper.php";
+
+// Générer un token CSRF pour cette session (si pas déjà créé)
+$csrf_token = generer_csrf_token();
+
+// ========================================
 // ÉTAPE 1 : Récupérer toutes les réservations avec JOIN
 // ========================================
 
@@ -140,7 +149,7 @@ try {
 
     <?php if (isset($_GET['success']) && $_GET['success'] == 'deleted'): ?>
         <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <strong>🗑️ Supprimée !</strong> La réservation a été annulée.
+            <strong> Supprimée !</strong> La réservation a été annulée.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
@@ -404,6 +413,7 @@ try {
                                         <?php if ($resa['statut'] == 'en_attente'): ?>
                                             <!-- Bouton Confirmer -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
+                                                <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
                                                 <input type="hidden" name="nouveau_statut" value="confirme">
                                                 <button type="submit" class="btn btn-sm btn-success"
@@ -414,6 +424,7 @@ try {
 
                                             <!-- Bouton Annuler -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
+                                                <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
                                                 <input type="hidden" name="nouveau_statut" value="annule">
                                                 <button type="submit" class="btn btn-sm btn-danger"
@@ -425,6 +436,7 @@ try {
                                         <?php elseif ($resa['statut'] == 'confirme'): ?>
                                             <!-- Si déjà confirmée, permettre seulement l'annulation -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
+                                                <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
                                                 <input type="hidden" name="nouveau_statut" value="annule">
                                                 <button type="submit" class="btn btn-sm btn-warning"
@@ -436,6 +448,7 @@ try {
                                         <?php else: ?>
                                             <!-- Si annulée, permettre la suppression définitive -->
                                             <form method="POST" action="delete_reservation.php" style="display: inline;">
+                                                <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
                                                 <button type="submit" class="btn btn-sm btn-outline-danger"
                                                         onclick="return confirm(' ATTENTION : Cette action est IRRÉVERSIBLE.\n\nVoulez-vous vraiment SUPPRIMER définitivement cette réservation de la base de données ?')">

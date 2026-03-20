@@ -17,8 +17,22 @@ if (!isset($_SESSION['user_id'])) {
 // Charger la connexion à la base de données
 require_once "../includes/db.php";
 
+// ========================================
+// PROTECTION CSRF : Charger les fonctions
+// ========================================
+require_once "includes/csrf_helper.php";
+
 // Vérifier que le formulaire a été soumis via POST
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    // ========================================
+    // ÉTAPE 0 : VÉRIFICATION DU TOKEN CSRF
+    // ========================================
+    // IMPORTANT : Cette vérification DOIT être faite AVANT toute suppression
+    // Elle protège contre les attaques CSRF (Cross-Site Request Forgery)
+    proteger_csrf($_POST['csrf_token'] ?? '');
+    // Si le token est invalide, le script s'arrête ici avec une erreur 403
+    // Si le token est valide, le script continue normalement ✅
 
     // ========================================
     // ÉTAPE 1 : Récupérer l'ID de la réservation

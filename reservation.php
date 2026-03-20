@@ -147,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             // 5C : Envoyer un email de notification à l'administrateur
             $mail = new PHPMailer(true);
-
             // Configuration SMTP
             $mail->isSMTP();
             $mail->Host = SMTP_HOST;

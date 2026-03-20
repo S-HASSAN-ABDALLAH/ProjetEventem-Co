@@ -63,9 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 if (password_verify($password, $user['mot_de_passe'])) {
 
-                    // ========================================
                     // ÉTAPE 5 : Connexion réussie → Créer la session
-                    // ========================================
+                    
 
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['user_nom'] = $user['nom'];
@@ -76,7 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     header('Location: dashboard.php');
                     exit();
 
-                } else {
+                } 
+                
+                else {
                     // Mot de passe incorrect
                     $error_message = "Email ou mot de passe incorrect.";
                 }
