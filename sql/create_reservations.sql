@@ -1,14 +1,7 @@
--- ========================================
--- FICHIER : create_reservations.sql
--- RÔLE : Créer la table reservations
--- ========================================
+-- Table reservations (clé étrangère vers evenements)
 
--- 1. Supprimer la table si elle existe déjà (pour repartir de zéro)
 DROP TABLE IF EXISTS reservations;
 
--- 2. Créer la table reservations
--- ATTENTION : Cette table a une clé étrangère vers 'evenements'
--- Il faut que la table 'evenements' existe avant de créer cette table
 CREATE TABLE reservations (
     id INT NOT NULL AUTO_INCREMENT,
     evenement_id INT NOT NULL,

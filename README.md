@@ -171,7 +171,6 @@ Accédez à `http://localhost/ProjetEventem-Co/` dans votre navigateur.
 ### Accès admin
 
 - **URL** : `http://localhost/ProjetEventem-Co/admin/login.php`
-- **Documentation** : Voir [admin/README.md](admin/README.md) pour plus de détails
 
 ---
 

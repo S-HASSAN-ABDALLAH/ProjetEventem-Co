@@ -1,40 +1,21 @@
 <?php
-// ========================================
-// FICHIER : admin_reservations.php
-// RÔLE : Afficher la liste de toutes les réservations (CRUD - READ)
-// ========================================
+// Gestion des réservations (liste + filtres)
+// Événement & Co
 
-// Démarrer la session
 session_start();
 
-// Vérifier que l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
 
-// Charger la connexion à la base de données
 require_once "../includes/db.php";
-
-// ========================================
-// PROTECTION CSRF : Générer le token
-// ========================================
-// Charger les fonctions de gestion CSRF
 require_once "includes/csrf_helper.php";
 
-// Générer un token CSRF pour cette session (si pas déjà créé)
 $csrf_token = generer_csrf_token();
 
-// ========================================
-// ÉTAPE 1 : Récupérer toutes les réservations avec JOIN
-// ========================================
-
+// Récupérer les réservations avec filtres
 try {
-    // ========================================
-    // Construction dynamique de la requête SQL avec filtres
-    // ========================================
-
-    // Base de la requête SQL avec JOIN
     $sql = "SELECT r.id, r.nom_client, r.email_client, r.tel_client,
                    r.date_evenement, r.ville, r.nombre_invites,
                    r.statut, r.prix_total, r.created_at,
@@ -43,31 +24,29 @@ try {
             INNER JOIN evenements e ON r.evenement_id = e.id
             WHERE 1=1";
 
-    // Tableau pour les paramètres PDO
     $params = [];
 
-    // Filtre par STATUT (si sélectionné)
+    // Filtre par statut
     if (isset($_GET['statut']) && $_GET['statut'] !== '') {
         $sql .= " AND r.statut = :statut";
         $params[':statut'] = $_GET['statut'];
     }
 
-    // Filtre par VILLE (si sélectionnée)
+    // Filtre par ville
     if (isset($_GET['ville']) && $_GET['ville'] !== '') {
         $sql .= " AND r.ville = :ville";
         $params[':ville'] = $_GET['ville'];
     }
 
-    // Tri par date de création (plus récent d'abord)
     $sql .= " ORDER BY r.created_at DESC";
 
-    // Exécution de la requête avec les paramètres
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    die("Erreur de base de données : " . $e->getMessage());
+    error_log("Erreur admin réservations : " . $e->getMessage());
+    die("Une erreur technique est survenue. Veuillez réessayer.");
 }
 
 ?>
@@ -78,42 +57,26 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Gestion des réservations</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        /* Style personnalisé pour les badges de statut */
-        .badge-en_attente {
-            background-color: #ffc107;
-            color: #000;
-        }
-        .badge-confirme {
-            background-color: #28a745;
-            color: #fff;
-        }
-        .badge-annule {
-            background-color: #dc3545;
-            color: #fff;
-        }
+        .badge-en_attente { background-color: #ffc107; color: #000; }
+        .badge-confirme { background-color: #28a745; color: #fff; }
+        .badge-annule { background-color: #dc3545; color: #fff; }
 
-        /* Style pour le header admin */
         .admin-header {
-         background: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);#f093fb 0%, #f5576c 100%);;
+            background: linear-gradient(to right, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
             color: white;
             padding: 2rem 0;
             margin-bottom: 2rem;
         }
 
-        /* Améliorer la lisibilité du tableau */
-        .table-hover tbody tr:hover {
-            background-color: #f8f9fa;
-        }
+        .table-hover tbody tr:hover { background-color: #f8f9fa; }
     </style>
 </head>
 <body>
 
-<!-- Header Admin -->
 <div class="admin-header">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
@@ -136,32 +99,30 @@ try {
     </div>
 </div>
 
-<!-- Contenu principal -->
 <div class="container mb-5">
 
-    <!-- Messages de succès/erreur -->
     <?php if (isset($_GET['success']) && $_GET['success'] == 'updated'): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong> Succès !</strong> Le statut de la réservation a été mis à jour.
+            <strong>Succès !</strong> Le statut de la réservation a été mis à jour.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
 
     <?php if (isset($_GET['success']) && $_GET['success'] == 'deleted'): ?>
         <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <strong> Supprimée !</strong> La réservation a été annulée.
+            <strong>Supprimée !</strong> La réservation a été annulée.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
 
     <?php if (isset($_GET['error'])): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong> Erreur !</strong> Une erreur est survenue. Veuillez réessayer.
+            <strong>Erreur !</strong> Une erreur est survenue. Veuillez réessayer.
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
 
-    <!-- Statistiques rapides -->
+    <!-- Statistiques -->
     <div class="row mb-4">
         <div class="col-md-4">
             <div class="card text-center border-warning">
@@ -216,7 +177,7 @@ try {
         </div>
     </div>
 
-    <!-- Formulaire de filtres -->
+    <!-- Filtres -->
     <div class="card shadow-sm mb-4">
         <div class="card-header bg-light">
             <h5 class="mb-0">
@@ -226,7 +187,6 @@ try {
         <div class="card-body">
             <form method="GET" action="admin_reservations.php" class="row g-3">
 
-                <!-- Filtre par Statut -->
                 <div class="col-md-4">
                     <label for="statut" class="form-label">
                         <i class="bi bi-bookmark"></i> Statut
@@ -248,7 +208,6 @@ try {
                     </select>
                 </div>
 
-                <!-- Filtre par Ville -->
                 <div class="col-md-4">
                     <label for="ville" class="form-label">
                         <i class="bi bi-geo-alt"></i> Ville
@@ -270,7 +229,6 @@ try {
                     </select>
                 </div>
 
-                <!-- Boutons d'action -->
                 <div class="col-md-4 d-flex align-items-end">
                     <button type="submit" class="btn btn-primary me-2">
                         <i class="bi bi-search"></i> Filtrer
@@ -282,7 +240,6 @@ try {
 
             </form>
 
-            <!-- Affichage des filtres actifs -->
             <?php if (isset($_GET['statut']) || isset($_GET['ville'])): ?>
                 <div class="mt-3 p-2 bg-info bg-opacity-10 rounded">
                     <small class="text-muted">
@@ -339,10 +296,8 @@ try {
                         <tbody>
                             <?php foreach ($reservations as $resa): ?>
                                 <tr>
-                                    <!-- ID -->
                                     <td><strong>#<?= $resa['id'] ?></strong></td>
 
-                                    <!-- Client -->
                                     <td>
                                         <div><strong><?= htmlspecialchars($resa['nom_client']) ?></strong></div>
                                         <small class="text-muted">
@@ -358,10 +313,8 @@ try {
                                         <?php endif; ?>
                                     </td>
 
-                                    <!-- Événement -->
                                     <td><?= htmlspecialchars($resa['nom_evenement']) ?></td>
 
-                                    <!-- Date -->
                                     <td>
                                         <?php
                                         $date = new DateTime($resa['date_evenement']);
@@ -369,24 +322,20 @@ try {
                                         ?>
                                     </td>
 
-                                    <!-- Ville -->
                                     <td>
                                         <i class="bi bi-geo-alt"></i>
                                         <?= htmlspecialchars($resa['ville']) ?>
                                     </td>
 
-                                    <!-- Invités -->
                                     <td>
                                         <i class="bi bi-people"></i>
                                         <?= $resa['nombre_invites'] ?>
                                     </td>
 
-                                    <!-- Prix -->
                                     <td>
                                         <strong><?= number_format($resa['prix_total'], 2, ',', ' ') ?> €</strong>
                                     </td>
 
-                                    <!-- Statut -->
                                     <td>
                                         <?php
                                         $badge_class = 'badge-' . $resa['statut'];
@@ -408,10 +357,8 @@ try {
                                         </span>
                                     </td>
 
-                                    <!-- Actions -->
                                     <td>
                                         <?php if ($resa['statut'] == 'en_attente'): ?>
-                                            <!-- Bouton Confirmer -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
                                                 <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
@@ -422,7 +369,6 @@ try {
                                                 </button>
                                             </form>
 
-                                            <!-- Bouton Annuler -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
                                                 <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
@@ -434,7 +380,6 @@ try {
                                             </form>
 
                                         <?php elseif ($resa['statut'] == 'confirme'): ?>
-                                            <!-- Si déjà confirmée, permettre seulement l'annulation -->
                                             <form method="POST" action="update_reservation.php" style="display: inline;">
                                                 <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
@@ -446,12 +391,11 @@ try {
                                             </form>
 
                                         <?php else: ?>
-                                            <!-- Si annulée, permettre la suppression définitive -->
                                             <form method="POST" action="delete_reservation.php" style="display: inline;">
                                                 <?= afficher_csrf_input() ?>
                                                 <input type="hidden" name="reservation_id" value="<?= $resa['id'] ?>">
                                                 <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                        onclick="return confirm(' ATTENTION : Cette action est IRRÉVERSIBLE.\n\nVoulez-vous vraiment SUPPRIMER définitivement cette réservation de la base de données ?')">
+                                                        onclick="return confirm('ATTENTION : Cette action est IRRÉVERSIBLE.\n\nVoulez-vous vraiment SUPPRIMER définitivement cette réservation ?')">
                                                     <i class="bi bi-trash"></i> Supprimer
                                                 </button>
                                             </form>
@@ -470,7 +414,6 @@ try {
 
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

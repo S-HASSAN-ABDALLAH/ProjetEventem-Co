@@ -1,11 +1,7 @@
 <?php
-// ========================================
-// FICHIER : contact.php
-// RÔLE : Traiter les messages du formulaire de contact
-// PROJET : Événement & Co - DWWM Bac+2
-// ========================================
+// Traitement du formulaire de contact
+// Événement & Co
 
-// Charger les dépendances
 require_once "includes/db.php";
 require_once "includes/email_config.php";
 require_once "vendor/autoload.php";
@@ -13,45 +9,34 @@ require_once "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Vérifier que le formulaire a été soumis via POST
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    // ========================================
-    // ÉTAPE 1 : Récupérer et nettoyer les données
-    // ========================================
+    // Récupérer et nettoyer les données
     $nom = htmlspecialchars(trim($_POST["nom"]));
     $email = htmlspecialchars(trim($_POST["email"]));
     $tel = htmlspecialchars(trim($_POST["tel"]));
     $message = htmlspecialchars(trim($_POST["message"]));
 
-    // ========================================
-    // ÉTAPE 2 : Valider les données
-    // ========================================
+    // Validation
     $errors = [];
 
-    // Validation 1 : Le nom est obligatoire
     if (empty($nom)) {
         $errors[] = "Le nom est obligatoire.";
     }
 
-    // Validation 2 : L'email est obligatoire et doit être valide
     if (empty($email)) {
         $errors[] = "L'email est obligatoire.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "L'email n'est pas valide.";
     }
 
-    // Validation 3 : Le message est obligatoire
     if (empty($message)) {
         $errors[] = "Le message est obligatoire.";
     }
 
-    // ========================================
-    // ÉTAPE 3 : Si validation OK, traiter le message
-    // ========================================
     if (empty($errors)) {
         try {
-            // Sauvegarder dans la base de données
+            // Sauvegarder en base de données
             $sql = "INSERT INTO contacts (nom, email, tel, message) VALUES (:nom, :email, :tel, :message)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
@@ -61,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 ':message' => $message,
             ]);
 
-            // Configuration PHPMailer pour l'envoi d'emails
+            // Envoyer email à l'admin
             $mail = new PHPMailer(true);
             $mail->isSMTP();
             $mail->Host = SMTP_HOST;
@@ -72,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $mail->Port = SMTP_PORT;
             $mail->CharSet = 'UTF-8';
 
-            // Email 1 : Notification à l'administrateur
             $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
             $mail->addAddress(ADMIN_EMAIL);
             $mail->Subject = 'Nouveau message de contact';
@@ -84,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $mail->Body .= "---\nEnvoyé depuis le site Événement & Co";
             $mail->send();
 
-            // Email 2 : Confirmation au client
+            // Envoyer confirmation au client
             $mail->clearAddresses();
             $mail->addAddress($email, $nom);
             $mail->Subject = 'Confirmation de votre message';
@@ -96,22 +80,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $mail->Body .= "Ceci est un email automatique, merci de ne pas y répondre.";
             $mail->send();
 
-            // Succès : Rediriger avec message de succès
             header('Location: contact.html?success=1');
             exit();
 
         } catch (PDOException $e) {
-            // Erreur de base de données
             header('Location: contact.html?error=db');
             exit();
         } catch (Exception $e) {
-            // Erreur d'envoi d'email
             header('Location: contact.html?error=email');
             exit();
         }
 
     } else {
-        // Erreurs de validation : rediriger avec les messages d'erreur
         $errorMessages = implode('|', $errors);
         header('Location: contact.html?error=validation&messages=' . urlencode($errorMessages));
         exit();

@@ -1,15 +1,14 @@
- html {
+html {
   scroll-behavior: smooth;
 }
 
- /* === إعدادات أساسية للصفحة === */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #FFF5F7;
   color: #333333;
-padding-top: 80px;
+  padding-top: 80px;
 }
 
 img {
@@ -22,16 +21,16 @@ img {
   width: 100px;
   height: auto;
 }
+
 img[alt*="logo"] {
-  max-width: 150px;      /* التحكم في الحجم */
-  height: auto;          /* يحافظ على التناسق */
-  object-fit: contain;   /* يمنع التمدد غير الطبيعي */
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
   display: block;
-  margin: auto;          /* لو أردتِ توسيطه */
+  margin: auto;
 }
 
-
-  .hero-section {
+.hero-section {
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
@@ -41,7 +40,6 @@ img[alt*="logo"] {
   margin-right: auto;
   text-align: center;
 }
-
 
 .hero-section .btn {
   display: block;
@@ -55,29 +53,26 @@ img[alt*="logo"] {
   width: 100%;
 }
 
-
 .nowrap {
-  white-space: nowrap; /* يمنع النص من الانتقال إلى سطر جديد */
+  white-space: nowrap;
 }
 
-/* === إعدادات شريط التنقل (القائمة) === */
+/* Navigation */
 .nav-link {
-  color: #8B6C65; /* لون روابط القائمة */
+  color: #8B6C65;
 }
 
 .nav-link.active {
-  font-weight: bold; /* تمييز الرابط النشط */
+  font-weight: bold;
   color: #f06428 !important;
 }
 
-/* تأثير عند تمرير الماوس على الروابط في الهيدر */
 header .nav-link:hover {
   color: #f06428 !important;
   font-weight: 600;
   text-decoration: underline;
 }
 
-/* انتقال سلس لكل الروابط والأيقونات */
 a,
 .nav-link,
 footer a,
@@ -85,7 +80,6 @@ footer i {
   transition: all 0.3s ease;
 }
 
-/* === العناوين الرئيسية === */
 h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -94,14 +88,12 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* === أزرار (عند المرور عليها) === */
 a.btn:hover {
   background-color: #da5521;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ظل بسيط */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-  
   color: #C2185B;
   text-shadow: 1px 1px 3px black;
 }
@@ -110,13 +102,10 @@ h2 {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-
 .card-title {
   color: #D6336C !important;
   font-weight: bold;
 }
-
-
 
 .btn-light {
   background-color: #FFE3EC;
@@ -124,7 +113,7 @@ h2 {
 }
 
 .btn-custom {
-  background-color: #d63384; /* زهري جميل */
+  background-color: #d63384;
   color: white;
   border: none;
   padding: 10px 25px;
@@ -135,31 +124,24 @@ h2 {
 }
 
 .btn-custom:hover {
-  background-color: #b02a6e; /* لون أغمق عند التحويم */
+  background-color: #b02a6e;
 }
 
-
-/* === خلفيات وألوان للأقسام === */
 .bg-rose {
-  background-color: #f7cfd0; /* وردي فاتح */
+  background-color: #f7cfd0;
 }
 
-/* === فاصل بين الأقسام (مسافة بيضاء) === */
 .section-separator {
-
   height: 50px;
-  background-color: #fff; /* لون الخلفية بين الأقسام */
+  background-color: #fff;
   margin-top: -25px;
 }
 
-
-
+/* Accessibilité - focus visible */
 :focus {
   outline: 3px solid #FF9900;
   outline-offset: 2px;
 }
-
-
 
 #evenements::before {
   content: "";
@@ -171,20 +153,19 @@ h2 {
 }
 
 section {
-  margin-bottom: 30px;   /* ↓ بدلًا من 60 أو 100 */
-  padding-top: 30px;     /* ↓ للتقليل من المسافة العلوية */
+  margin-bottom: 30px;
+  padding-top: 30px;
 }
 
 .section-evenement {
-  padding-bottom: 1.5rem; 
+  padding-bottom: 1.5rem;
 }
 
 .section-evenement h2,
 .section-evenement p {
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* ظل أسود خفيف */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-
 
 #evenements > * {
   position: relative;
@@ -211,25 +192,20 @@ section {
 }
 
 .evenement-text-bg {
-  background-color: rgba(65, 63, 64, 0.5); /* خلفية نصف شفافة */
+  background-color: rgba(65, 63, 64, 0.5);
   padding: 20px 30px;
   border-radius: 15px;
   display: inline-block;
   max-width: 90%;
   margin: auto;
   color: #fff;
-
 }
 
 .evenement-text p {
-  font-size: 1rem; /* بدلًا من مثلاً 0.8rem */
+  font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
-
 }
-
-
-
 
 .btn-evenement:hover {
   background-color: #e13a79;
@@ -243,39 +219,33 @@ section {
   }
 }
 
-
-
-
-
 #calendrier {
-  padding-top: 20px;    /* تأكد أن القسم التالي لا يبدأ بمسافة كبيرة */
+  padding-top: 20px;
 }
 
 #rendezVousModal .modal-content {
-  background-color: #ffe6f0; /* يمكنك تغيير اللون حسب ذوقك */
+  background-color: #ffe6f0;
   border: none;
   border-radius: 1rem;
 }
 
 #contact {
-  scroll-margin-top: 100px; /* لضبط التمرير */
-  padding-bottom: 100px; /* لإبعاد القسم التالي */
-  
+  scroll-margin-top: 100px;
+  padding-bottom: 100px;
 }
 
- #coordonnees { padding-top:100 ;
-  margin-top: 50px; 
- }
+#coordonnees {
+  padding-top: 100;
+  margin-top: 50px;
+}
 
-
-/* ضبط ارتفاع الفاصل في الشاشات الصغيرة (مثل الهاتف) */
 @media (max-width: 768px) {
   .section-separator {
     height: 30px;
   }
 }
 
-/* === قسم يحتوي على صورة خلفية مغطية للشاشة === */
+/* Section avec image de fond */
 .image-section {
   position: relative;
   min-height: 100vh;
@@ -285,18 +255,16 @@ section {
   overflow: hidden;
 }
 
-/* إعدادات الصورة الخلفية */
 .bg-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* تغطية كاملة */
+  object-fit: cover;
   z-index: 0;
 }
 
-/* محتوى النص داخل القسم */
 .content {
   position: relative;
   z-index: 1;
@@ -305,65 +273,55 @@ section {
   max-width: 90%;
 }
 
-/* خلفية شفافة لتفاصيل القسم */
 .details-section {
-  background-color: rgba(0, 0, 0, 0.1); /* أسود خفيف شفاف */
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 15px;
   color: white;
 }
 
 .section-evenement {
-  margin-bottom: 60px; /* أو أكثر حسب ما يناسبك */
+  margin-bottom: 60px;
 }
 
 .section-evenement p {
   font-size: 17px;
 }
 
-
-
-/* === إعدادات الفوتر (الجزء السفلي) === */
-
-/* تأثير عند المرور على روابط الفوتر */
+/* Footer */
 footer a:hover {
   color: #f06428 !important;
   font-weight: 500;
 }
 
-/* تأثير على أيقونات التواصل الاجتماعي */
 footer i:hover {
   color: #f06428 !important;
-  transform: scale(1.2); /* تكبير بسيط */
+  transform: scale(1.2);
 }
 
-/* شريط الحقوق أسفل الفوتر */
 footer .copyright {
-  background-color: #dc868e; /* وردي غامق */
+  background-color: #dc868e;
   font-size: 0.9rem;
   color: white;
   text-align: center;
   padding: 12px 0;
 }
 
-/* === تنسيق قسم الشهادات (Témoignages) === */
+/* Témoignages */
 .card.mb-3.shadow-sm {
-  max-width: 700px;        /* تحديد العرض الأقصى للبطاقة */
-  margin-left: auto;       /* توسيط أفقي */
+  max-width: 700px;
+  margin-left: auto;
   margin-right: auto;
 }
 
 .card-body p {
-  font-size: 1.1rem;       /* حجم نص أكبر قليلاً */
-  line-height: 1.6;        /* تحسين المسافات بين الأسطر */
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-
-
-/* ========== 📱 Mobile First (jusqu’à 768px) ========== */
+/* Mobile */
 @media (max-width: 768px) {
 
-  /* === Header === */
   header ul.nav {
     flex-direction: column !important;
     align-items: center;
@@ -375,7 +333,6 @@ footer .copyright {
     width: auto;
   }
 
-  /* === Hero Section (Accueil) === */
   .row.align-items-center {
     flex-direction: column-reverse;
     padding: 0 15px;
@@ -410,18 +367,15 @@ footer .copyright {
     font-size: 1rem;
   }
 
-  /* === Services Cards === */
   .card {
     margin-bottom: 20px;
   }
 
-  /* === Témoignages === */
   .card.mb-3.shadow-sm {
     max-width: 100%;
     margin: 10px auto;
   }
 
-  /* === Sections avec image === */
   .image-section {
     padding: 40px 20px;
   }
@@ -438,7 +392,6 @@ footer .copyright {
     font-size: 1rem !important;
   }
 
-  /* === Footer === */
   footer .row {
     flex-direction: column;
     text-align: center;
@@ -457,8 +410,7 @@ footer .copyright {
   }
 }
 
-
-/* ========== 💻 Tablette (769px à 1024px) ========== */
+/* Tablette */
 @media (min-width: 769px) and (max-width: 1024px) {
 
   h1 {
@@ -484,8 +436,10 @@ footer .copyright {
   .content {
     padding: 20px 30px;
   }
+}
 
-  @media screen and (min-width: 1200px) {
+/* Desktop */
+@media screen and (min-width: 1200px) {
   .hero-content {
     max-width: 700px;
     padding: 60px;
@@ -503,17 +457,12 @@ footer .copyright {
     padding: 12px 30px;
     font-size: 1rem;
   }
-}
 
-@media screen and (min-width: 1200px) {
-  /* تصغير اللوجو على الشاشات الكبيرة */
-.logo-img {
-  width: 120px;
-  height: auto;
-}
+  .logo-img {
+    width: 120px;
+    height: auto;
+  }
 
-/* تنسيق قسم الهيرو للشاشات الكبيرة */
-@media screen and (min-width: 1200px) {
   .hero-section {
     padding: 100px 20px;
   }
@@ -534,11 +483,7 @@ footer .copyright {
   }
 }
 
-}
-
-}
-
-/* === Mobile (أقل من 768px) === */
+/* Mobile petit */
 @media screen and (max-width: 767px) {
   #evenements .display-4 {
     font-size: 2rem;
@@ -563,7 +508,7 @@ footer .copyright {
   }
 }
 
-/* === Tablette (768px إلى 1199px) === */
+/* Tablette */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   #evenements .display-4 {
     font-size: 2.5rem;
@@ -588,7 +533,7 @@ footer .copyright {
   }
 }
 
-/* === Desktop (1200px فما فوق) === */
+/* Desktop */
 @media screen and (min-width: 1200px) {
   #evenements .display-4 {
     font-size: 3rem;
@@ -614,43 +559,38 @@ footer .copyright {
 }
 
 @media screen and (max-width: 576px) {
-  /* العنوان الكبير في الهيدر */
   .hero-text h1 {
-    font-size: 1.8rem;         /* تصغير الحجم */
+    font-size: 1.8rem;
     text-align: center;
     line-height: 1.3;
     padding: 0 10px;
     word-wrap: break-word;
   }
 
-  /* النص الصغير تحت العنوان */
   .hero-text p {
     font-size: 1rem;
     text-align: center;
     padding: 0 10px;
   }
 
-  /* زر Nous contacter */
   .hero-content .btn {
     font-size: 1rem;
     padding: 10px 20px;
   }
 
-  /* تقليل ارتفاع الفاصل بين الأقسام */
   .section-separator {
-    height: 20px;  /* بدلًا من height كبير */
-    background-color: transparent; /* أو لون خفيف إذا أردت */
+    height: 20px;
+    background-color: transparent;
   }
 }
 
-/* === تصحيح تموضع النص في قسم الأحداث على الجوال === */
 @media screen and (max-width: 576px) {
   #evenements .position-absolute {
     position: static !important;
     transform: none !important;
     padding: 20px;
     margin-top: -20px;
-    background-color: rgba(0, 0, 0, 0.6); /* خلفية شفافة */
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     text-align: center;
   }
@@ -678,11 +618,10 @@ footer .copyright {
   }
 }
 
-/* === تحسين الزر والخلفية لقسم الأحداث على الهاتف === */
 @media screen and (max-width: 576px) {
   #evenements {
     padding-bottom: 20px;
-    background-color: #000; /* لون احتياطي لو لم تُحمّل الصورة */
+    background-color: #000;
   }
 
   #evenements img {
@@ -691,7 +630,7 @@ footer .copyright {
   }
 
   #evenements .btn-custom {
-    background-color: #ff69b4; /* لون زهري واضح */
+    background-color: #ff69b4;
     color: white;
     padding: 12px 24px;
     font-size: 1rem;
@@ -705,7 +644,7 @@ footer .copyright {
   }
 
   #evenements .position-absolute {
-    background-color: rgba(0, 0, 0, 0.6); /* زيادة التباين */
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
   }
@@ -732,9 +671,3 @@ footer .copyright {
     font-size: 1rem;
   }
 }
-
-
-
-
-
-

@@ -1,12 +1,7 @@
--- ========================================
--- FICHIER : create_contacts.sql
--- RÔLE : Créer la table contacts
--- ========================================
+-- Table contacts
 
--- 1. Supprimer la table si elle existe déjà (pour repartir de zéro)
 DROP TABLE IF EXISTS contacts;
 
--- 2. Créer la table contacts
 CREATE TABLE contacts (
     id INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL,

@@ -1,26 +1,12 @@
--- ========================================
--- FICHIER : init_database.sql
--- RÔLE : Initialiser TOUTE la base de données
--- USAGE : Exécuter ce fichier pour créer toutes les tables
--- ========================================
+-- Initialisation complète de la base de données
 
--- 1. Créer la base de données si elle n'existe pas
 CREATE DATABASE IF NOT EXISTS evenement_db
     DEFAULT CHARACTER SET utf8mb4
     COLLATE utf8mb4_general_ci;
 
--- 2. Utiliser cette base de données
 USE evenement_db;
 
--- ========================================
--- ORDRE D'EXÉCUTION IMPORTANT :
--- 1. utilisateurs (pas de dépendances)
--- 2. contacts (pas de dépendances)
--- 3. evenements (pas de dépendances)
--- 4. reservations (dépend de evenements)
--- ========================================
-
--- ====== TABLE: utilisateurs ======
+-- Table utilisateurs
 DROP TABLE IF EXISTS utilisateurs;
 CREATE TABLE utilisateurs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,8 +17,7 @@ CREATE TABLE utilisateurs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Compte administrateur par défaut
--- Mot de passe : admin123 (haché en bcrypt)
+-- Compte admin (mot de passe : admin123, haché en bcrypt)
 INSERT INTO utilisateurs (nom, email, mot_de_passe, role)
 VALUES (
     'Administrateur',
@@ -41,7 +26,7 @@ VALUES (
     'admin'
 );
 
--- ====== TABLE: contacts ======
+-- Table contacts
 DROP TABLE IF EXISTS contacts;
 CREATE TABLE contacts (
     id INT NOT NULL AUTO_INCREMENT,
@@ -53,7 +38,7 @@ CREATE TABLE contacts (
     PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- ====== TABLE: evenements ======
+-- Table evenements
 DROP TABLE IF EXISTS evenements;
 CREATE TABLE evenements (
     id INT NOT NULL AUTO_INCREMENT,
@@ -65,8 +50,7 @@ CREATE TABLE evenements (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- ====== TABLE: reservations ======
--- IMPORTANT : doit être créée APRÈS evenements (clé étrangère)
+-- Table reservations (clé étrangère vers evenements)
 DROP TABLE IF EXISTS reservations;
 CREATE TABLE reservations (
     id INT NOT NULL AUTO_INCREMENT,
@@ -86,7 +70,3 @@ CREATE TABLE reservations (
     KEY evenement_id (evenement_id),
     CONSTRAINT reservations_ibfk_1 FOREIGN KEY (evenement_id) REFERENCES evenements (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- ========================================
--- FIN DE L'INITIALISATION
--- ========================================

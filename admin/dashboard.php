@@ -1,51 +1,40 @@
 <?php
-// ========================================
-// FICHIER : dashboard.php
-// RÔLE : Tableau de bord admin avec statistiques SQL avancées
-// ========================================
+// Dashboard admin - Événement & Co
 
-// Démarrer la session
 session_start();
 
-// ========================================
-// ÉTAPE 1 : Vérifier que l'utilisateur est connecté
-// ========================================
-
+// Vérifier la connexion
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
 
-// Charger la connexion à la base de données
 require_once "../includes/db.php";
 
-// ========================================
-// ÉTAPE 2 : Récupérer les statistiques SQL
-// ========================================
-
+// Récupérer les statistiques
 try {
 
-    // STATISTIQUE 1 : Nombre total de réservations
+    // Nombre total de réservations
     $sql_total = "SELECT COUNT(*) as total FROM reservations";
     $stmt_total = $pdo->query($sql_total);
     $total_reservations = $stmt_total->fetch(PDO::FETCH_ASSOC)['total'];
 
-    // STATISTIQUE 2 : Nombre de réservations en attente
+    // Réservations en attente
     $sql_attente = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'en_attente'";
     $stmt_attente = $pdo->query($sql_attente);
     $total_attente = $stmt_attente->fetch(PDO::FETCH_ASSOC)['total'];
 
-    // STATISTIQUE 3 : Nombre de réservations confirmées
+    // Réservations confirmées
     $sql_confirme = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'confirme'";
     $stmt_confirme = $pdo->query($sql_confirme);
     $total_confirme = $stmt_confirme->fetch(PDO::FETCH_ASSOC)['total'];
 
-    // STATISTIQUE 4 : Nombre de réservations annulées
+    // Réservations annulées
     $sql_annule = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'annule'";
     $stmt_annule = $pdo->query($sql_annule);
     $total_annule = $stmt_annule->fetch(PDO::FETCH_ASSOC)['total'];
 
-    // STATISTIQUE 5 : Réservations récentes (dernières 5)
+    // 5 dernières réservations avec le nom de l'événement
     $sql_recentes = "SELECT r.id, r.nom_client, r.date_evenement, r.statut,
                             e.nom as nom_evenement
                      FROM reservations r
@@ -56,7 +45,8 @@ try {
     $reservations_recentes = $stmt_recentes->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    die("Erreur de base de données : " . $e->getMessage());
+    error_log("Erreur dashboard : " . $e->getMessage());
+    die("Une erreur technique est survenue. Veuillez réessayer.");
 }
 
 ?>
@@ -67,7 +57,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Événement & Co</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -93,8 +82,6 @@ try {
         .stat-card.attente { border-left-color: #ffc107; }
         .stat-card.confirme { border-left-color: #28a745; }
         .stat-card.annule { border-left-color: #dc3545; }
-        .stat-card.ca { border-left-color: #17a2b8; }
-        .stat-card.invites { border-left-color: #fd7e14; }
 
         .stat-number {
             font-size: 2.5rem;
@@ -108,7 +95,6 @@ try {
 </head>
 <body>
 
-<!-- Header -->
 <div class="dashboard-header">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
@@ -131,13 +117,10 @@ try {
     </div>
 </div>
 
-<!-- Contenu principal -->
 <div class="container mb-5">
 
-    <!-- Ligne 1 : Statistiques principales -->
     <div class="row g-4 mb-4">
 
-        <!-- Total réservations -->
         <div class="col-md-3">
             <div class="card stat-card total h-100">
                 <div class="card-body">
@@ -150,7 +133,6 @@ try {
             </div>
         </div>
 
-        <!-- En attente -->
         <div class="col-md-3">
             <div class="card stat-card attente h-100">
                 <div class="card-body">
@@ -163,7 +145,6 @@ try {
             </div>
         </div>
 
-        <!-- Confirmées -->
         <div class="col-md-3">
             <div class="card stat-card confirme h-100">
                 <div class="card-body">
@@ -176,7 +157,6 @@ try {
             </div>
         </div>
 
-        <!-- Annulées -->
         <div class="col-md-3">
             <div class="card stat-card annule h-100">
                 <div class="card-body">
@@ -270,7 +250,6 @@ try {
 
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
