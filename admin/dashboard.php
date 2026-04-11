@@ -9,30 +9,21 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+
 require_once "../includes/db.php";
 
 // Récupérer les statistiques
 try {
 
-    // Nombre total de réservations
-    $sql_total = "SELECT COUNT(*) as total FROM reservations";
-    $stmt_total = $pdo->query($sql_total);
-    $total_reservations = $stmt_total->fetch(PDO::FETCH_ASSOC)['total'];
+    // Statistiques des réservations par statut (une seule requête)
+    $sql_stats = "SELECT statut, COUNT(*) as total FROM reservations GROUP BY statut";
+    $stmt_stats = $pdo->query($sql_stats);
+    $stats = $stmt_stats->fetchAll(PDO::FETCH_KEY_PAIR);
 
-    // Réservations en attente
-    $sql_attente = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'en_attente'";
-    $stmt_attente = $pdo->query($sql_attente);
-    $total_attente = $stmt_attente->fetch(PDO::FETCH_ASSOC)['total'];
-
-    // Réservations confirmées
-    $sql_confirme = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'confirme'";
-    $stmt_confirme = $pdo->query($sql_confirme);
-    $total_confirme = $stmt_confirme->fetch(PDO::FETCH_ASSOC)['total'];
-
-    // Réservations annulées
-    $sql_annule = "SELECT COUNT(*) as total FROM reservations WHERE statut = 'annule'";
-    $stmt_annule = $pdo->query($sql_annule);
-    $total_annule = $stmt_annule->fetch(PDO::FETCH_ASSOC)['total'];
+    $total_attente = $stats['en_attente'] ?? 0;
+    $total_confirme = $stats['confirme'] ?? 0;
+    $total_annule = $stats['annule'] ?? 0;
+    $total_reservations = $total_attente + $total_confirme + $total_annule;
 
     // 5 dernières réservations avec le nom de l'événement
     $sql_recentes = "SELECT r.id, r.nom_client, r.date_evenement, r.statut,
