@@ -118,7 +118,7 @@ try {
     <?php if (isset($_GET['error'])): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Erreur !</strong> Une erreur est survenue. Veuillez réessayer.
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>        
         </div>
     <?php endif; ?>
 
